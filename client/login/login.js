@@ -1,6 +1,6 @@
 angular.module('gaussHyrax.login', ['LoginServices'])
 
-.controller('loginController', ['$scope', '$location','$window','UserFactory', 
+.controller('loginController', ['$scope', '$location','$window','UserFactory',
   function($scope, $location, $window, UserFactory) {
 
   $scope.showLoginError = false;
@@ -11,7 +11,7 @@ angular.module('gaussHyrax.login', ['LoginServices'])
   $scope.$emit('logout');
 
   $scope.saveUser = function() {
-    
+
     $scope.showLoginError = false;
 
     if(!$scope.user || !$scope.user.userName || !$scope.user.password){
@@ -25,7 +25,7 @@ angular.module('gaussHyrax.login', ['LoginServices'])
       $window.localStorage.setItem('com.hyrax',res.data['_id']);
 
       //emit login event so familyController can fetch data
-      $scope.$emit('login'); 
+      $scope.$emit('login');
 
       $location.path('/dashboard');
     },function(err){
@@ -33,7 +33,7 @@ angular.module('gaussHyrax.login', ['LoginServices'])
       $scope.errorMessage = "Cannot create. This user already exists."
       console.log('user create failed',err);
     });
-    
+
   }
 
   $scope.verifyUser = function () {
@@ -47,12 +47,12 @@ angular.module('gaussHyrax.login', ['LoginServices'])
       console.log(res);
       //save user id in local storage
       $window.localStorage.setItem('com.hyrax',res.data);
-      
+
       if(res.data.length){
         //a user profile was returned, so forward them to their dashboard
 
         //emit login event so familyController can fetch data
-        $scope.$emit('login');        
+        $scope.$emit('login');
         console.log('changing location')
 
         //emit an event to the parent familyController to display the usernaem on login
@@ -69,4 +69,3 @@ angular.module('gaussHyrax.login', ['LoginServices'])
   }
 
 }]);
-

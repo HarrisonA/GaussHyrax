@@ -21,6 +21,6 @@ angular.module('LoginServices', [])
 
   }
 
-return userFactory; 
+return userFactory;
 
 }])
