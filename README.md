@@ -6,7 +6,7 @@ Manage the people in your life.
 
 ##Why
 
-Because your a hard working individual and it is challenging to maintain relationships with people that are not in your daily path.
+Because you're a hard working individual and it is challenging to maintain relationships with people that are not in your daily path.
 
 Prsnl is an app that aims to make you more cognizant of your relationships.  It does this by reminding you to contact people (at a specified interval) and assigns points to interactions you have with people. Over time your points decay, suggesting that your relationship with that person is becoming weaker.  The only way to increase points is to log an interaction.  This allows you to visualize your communication with people.
 
