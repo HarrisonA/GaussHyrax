@@ -9,15 +9,15 @@ angular.module('gaussHyrax.action', [])
   $scope.points = 0;
   $scope.singleNote = "";  // Keep the note field blank by default
   $scope.selectedAction = null;
-  
+
   // Using moment to convert date into a simpler format
   $scope.dateEntered = moment(new Date()).format('MMM DD YYYY');
 
   // get the user ID from the window local storage
   var userId = $window.localStorage.getItem('com.hyrax');
-  
+
   // $scope.member._id is set in the family.html (from familyView)
-  // This is the id of the family member of the current action view 
+  // This is the id of the family member of the current action view
   var famMemberId = $scope.member._id;
 
 
@@ -36,19 +36,19 @@ angular.module('gaussHyrax.action', [])
     $scope.selectedAction = actionClicked;
   };
 
-  // Invoked when the actionView submit button is clicked 
+  // Invoked when the actionView submit button is clicked
   $scope.saveAction = function(someAction, pointValue, dateOccured, someNote){
     if (someAction === null){
       $scope.noActionYet = "No action selected."
       return
     }
-    $scope.noActionYet = ""; 
-    
+    $scope.noActionYet = "";
+
     var actionObj = {
       action: someAction,
       points: pointValue,
       date: dateOccured,
-      notes: someNote 
+      notes: someNote
     };
 
     $scope.singleNote = "";  // Clear the notes field after submission
@@ -61,12 +61,12 @@ angular.module('gaussHyrax.action', [])
       headers: {'Content-Type': 'application/json'}
     })
     .then(function(res) {
-      
+
       $scope.actionSaved = "Saved!";  // {{actionSaved}} will be displayed
 
       // using Angular's version of setTimeOut, erase the message after 3 seconds
-      $timeout(function (){           
-        $scope.actionSaved = "" }, 3000); 
+      $timeout(function (){
+        $scope.actionSaved = "" }, 3000);
 
       // this will put the action in the notes field in summary view
       $scope.member.history.push(res.data.historyItem);
@@ -82,7 +82,7 @@ angular.module('gaussHyrax.action', [])
       // The summaryController is listening for this event
       $scope.$emit('historyUpdateEvent', famMemberId, res.data.historyItem);
     })
-  
+
   };
 
 }]);
