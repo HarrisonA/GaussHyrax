@@ -68,7 +68,7 @@ angular.module('gaussHyrax.family', ['FamilyServices'])
     });
 
     $scope.$on('removeFam',function(event,id){
-      console.log('removing user from familyData');
+      // console.log('removing user from familyData');
       //remove user from the list so it does not show in the UI
       for (var i = 0; i < $scope.familyData.length; i++) {
         if($scope.familyData[i]._id === id){
